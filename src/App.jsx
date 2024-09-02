@@ -13,8 +13,8 @@ export default function App() {
       <div className="w-64 fixed">
         <SideNav selectedIndex={(value) => setSelectedIndex(value)} />
       </div>
-      <div className="ml-64 grid grid-cols-1 md:grid-cols-6">
-        <div className="md:col-span-2 border shadow-sm h-screen p-5">
+      <div className="ml-64 grid grid-cols-1 md:grid-cols-6 fixed">
+        <div className="md:col-span-2 border shadow-sm h-screen p-5 overflow-auto">
           {selectedIndex == 0 ? <IconController /> : <BackgroundController />}
         </div>
         <div className="md:col-span-3">Icon preview</div>
