@@ -1,13 +1,19 @@
 import { Smile } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ColorPickerController from "./ColorPickerController";
+import { UpdateStorageContent } from "@/context/UpdateStorageContext";
 
 export default function IconController() {
-  const [size, setSize] = useState(280);
-  const [rotate, setRotate] = useState(0);
-  const [color, setColor] = useState("#fff");
   const storageValue = JSON.parse(localStorage.getItem("value"));
+  const [size, setSize] = useState(storageValue ? storageValue?.iconSize : 280);
+  const [rotate, setRotate] = useState(
+    storageValue ? storageValue?.iconRotate : 0
+  );
+  const [color, setColor] = useState(
+    storageValue ? storageValue?.iconColor : "#fff"
+  );
+  const { updateStorage, setUpdateStorage } = useContext(UpdateStorageContent);
   useEffect(() => {
     const updatedValue = {
       ...storageValue,
@@ -16,6 +22,7 @@ export default function IconController() {
       iconColor: color,
       icon: "Smile",
     };
+    setUpdateStorage(updatedValue);
     localStorage.setItem("value", JSON.stringify(updatedValue));
   }, [size, rotate, color]);
 
@@ -32,7 +39,7 @@ export default function IconController() {
               Size <span>{size} px</span>
             </label>
             <Slider
-              defaultValue={[280]}
+              defaultValue={[size]}
               max={512}
               step={1}
               onValueChange={(e) => setSize(e[0])}
@@ -43,7 +50,7 @@ export default function IconController() {
               Rotate <span>{rotate} &deg;</span>
             </label>
             <Slider
-              defaultValue={[0]}
+              defaultValue={[rotate]}
               max={360}
               step={1}
               onValueChange={(e) => setRotate(e[0])}

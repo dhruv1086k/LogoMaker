@@ -4,22 +4,37 @@ import SideNav from "./components/SideNav";
 import IconController from "./components/IconController";
 import BackgroundController from "./components/BackgroundController";
 import { useState } from "react";
+import LogoPreview from "./components/LogoPreview";
+import { UpdateStorageContent } from "./context/UpdateStorageContext";
 
 export default function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [updateStorage, setUpdateStorage] = useState({});
   return (
     <>
-      <Header />
-      <div className="w-64 fixed">
-        <SideNav selectedIndex={(value) => setSelectedIndex(value)} />
-      </div>
-      <div className="ml-64 grid grid-cols-1 md:grid-cols-6 fixed">
-        <div className="md:col-span-2 border shadow-sm h-screen p-5 overflow-auto">
-          {selectedIndex == 0 ? <IconController /> : <BackgroundController />}
+      <UpdateStorageContent.Provider
+        value={{ updateStorage, setUpdateStorage }}
+      >
+        <div>
+          <Header />
+          <div className="w-64 fixed">
+            <SideNav selectedIndex={(value) => setSelectedIndex(value)} />
+          </div>
+          <div className="ml-64 grid grid-cols-1 md:grid-cols-6 fixed">
+            <div className="md:col-span-2 border shadow-sm h-screen p-5 overflow-auto">
+              {selectedIndex == 0 ? (
+                <IconController />
+              ) : (
+                <BackgroundController />
+              )}
+            </div>
+            <div className="md:col-span-3">
+              <LogoPreview />
+            </div>
+            <div className="md:col-span-1">Ads</div>
+          </div>
         </div>
-        <div className="md:col-span-3">Icon preview</div>
-        <div className="md:col-span-1">Ads</div>
-      </div>
+      </UpdateStorageContent.Provider>
     </>
   );
 }
