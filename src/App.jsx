@@ -1,35 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Header from "./components/Header";
+import "./App.css";
+import SideNav from "./components/SideNav";
+import IconController from "./components/IconController";
+import BackgroundController from "./components/BackgroundController";
+import { useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
+  const [selectedIndex, setSelectedIndex] = useState(0);
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <Header />
+      <div className="w-64 fixed">
+        <SideNav selectedIndex={(value) => setSelectedIndex(value)} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="ml-64 grid grid-cols-1 md:grid-cols-6">
+        <div className="md:col-span-2 border shadow-sm h-screen p-5">
+          {selectedIndex == 0 ? <IconController /> : <BackgroundController />}
+        </div>
+        <div className="md:col-span-3">Icon preview</div>
+        <div className="md:col-span-1">Ads</div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
-
-export default App
