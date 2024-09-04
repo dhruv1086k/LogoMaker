@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { UpdateStorageContent } from "@/context/UpdateStorageContext";
 import { icons } from "lucide-react";
+import html2canvas from "html2canvas";
 
-export default function LogoPreview() {
+export default function LogoPreview({ downloadIcon }) {
   const [storageValue, setStorageValue] = useState();
   const { updateStorage, setUpdateStorage } = useContext(UpdateStorageContent);
 
@@ -11,6 +12,25 @@ export default function LogoPreview() {
     console.log(storageData);
     setStorageValue(storageData);
   }, [updateStorage]);
+
+  useEffect(() => {
+    if (downloadIcon) {
+      downloadPngLogo();
+    }
+  }, [downloadIcon]);
+
+  const downloadPngLogo = () => {
+    const downloadLogoDiv = document.getElementById("downloadLogoDiv");
+    html2canvas(downloadLogoDiv, {
+      backgroundColor: null,
+    }).then((canvas) => {
+      const pngImage = canvas.toDataURL("image/png");
+      const downloadLink = document.createElement("a");
+      downloadLink.href = pngImage;
+      downloadLink.download = "Dhruv_new_logo.png";
+      downloadLink.click();
+    });
+  };
 
   const Icon = ({ name, color, size, rotate }) => {
     const LucidIcon = icons[name];
@@ -38,6 +58,7 @@ export default function LogoPreview() {
           }}
         >
           <div
+            id="downloadLogoDiv"
             className="h-full w-full flex justify-center items-center"
             style={{
               borderRadius: storageValue?.bgRounded,
