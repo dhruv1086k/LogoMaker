@@ -1,5 +1,7 @@
 # ICON MAKER REACT APP
 
+<img src="./gitImages/1.png" alt="">
+
 ## Lessons Learned
 
 This was a challenging project where i learned a lot of new concepts in react used context api in depth and tried using some new npm tools like color picker tool & html2canvas tool. At the end i deployed my first app in vercel which seemed difficult to use but it was actually a seemless experience and i deployed my first app in few seconds.
@@ -24,6 +26,8 @@ This has functionalities like :-
 </ul>
 
 ## Screenshots
+
+<img src="./gitImages/2.png" alt="">
 
 ## Reference
 
