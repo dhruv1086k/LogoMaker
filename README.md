@@ -1,8 +1,30 @@
-# React + Vite
+# ICON MAKER REACT APP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Lessons Learned
 
-Currently, two official plugins are available:
+This was a challenging project where i learned a lot of new concepts in react used context api in depth and tried using some new npm tools like color picker tool & html2canvas tool. At the end i deployed my first app in vercel which seemed difficult to use but it was actually a seemless experience and i deployed my first app in few seconds.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<br />
+
+This has functionalities like :-
+<br />
+
+<ul>
+<li>changing the icon image, it's color, size or rotation of the icon.</li><br/>
+<li>changing the roundness, padding and background color</li> <br />
+<li>downloading the icon at the end </li>
+<ul>
+
+## Tech Stack
+
+<ul>
+<li>React Js and Vite</li>
+<li>vercel for deployment</li>
+<li>npm for tools like color picker and html2canvas</li>
+</ul>
+
+## Screenshots
+
+## Reference
+
+tubeguruji youtube channel
